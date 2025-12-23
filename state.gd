@@ -2,7 +2,7 @@ extends Node2D
 class_name State
 
 @onready var debug = owner.find_child("debug")
-@onready var player = owner.get_praent().find_child("player")
+@onready var player = owner.get_parent().find_child("player")
 @onready var progress_bar = owner.find_child("ProgressBar")
 @onready var animation_player = owner.find_child("AnimationPlayer")
 

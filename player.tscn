@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://boh6lksb3eh25"]
+
+[ext_resource type="Script" uid="uid://dnpwephlh8kqt" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://celvun8pp7lou" path="res://bullet.tscn" id="2_onrkg"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_onrkg"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_4flbx")
+bullet_node = ExtResource("2_onrkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+texture = SubResource("PlaceholderTexture2D_onrkg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i3pqv")

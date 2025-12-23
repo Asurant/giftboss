@@ -1,7 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr58jibotg44w"]
+[gd_scene load_steps=3 format=3 uid="uid://dr58jibotg44w"]
 
 [ext_resource type="PackedScene" uid="uid://dk660wq3jfnvs" path="res://boss.tscn" id="1_ve44f"]
+[ext_resource type="PackedScene" uid="uid://boh6lksb3eh25" path="res://player.tscn" id="2_any6y"]
 
 [node name="BossRoom" type="Node2D"]
 
 [node name="Boss" parent="." instance=ExtResource("1_ve44f")]
+position = Vector2(564, 270)
+
+[node name="player" parent="." instance=ExtResource("2_any6y")]
+position = Vector2(346, 345)
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(155, 115)
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints/Marker2D"]
+position = Vector2(829, 5)
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints/Marker2D/Marker2D"]
+position = Vector2(-17, 439)
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints/Marker2D/Marker2D/Marker2D"]
+position = Vector2(-800, -6)

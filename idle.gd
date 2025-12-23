@@ -5,11 +5,10 @@ extends State
 var player_entered: bool = false:
 	set(value):
 		player_entered = value
-		collision.set_deferrer("disabled", value)
-		progress_bar.set_deferred("visible", value)
+		collision.set_deferred("disabled", value)
 
 func _on_player_detection_body_entered(body):
-	player_entered = true
+	player_entered = true # Replace with function body.
 
 func transition():
 	if player_entered:
