@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var progress_bar = $UI/ProgressBar
 
-var health = 100:
+var health = 50:
 	set(value):
 		health = value
 		progress_bar.value = value
@@ -11,4 +11,6 @@ var health = 100:
 			$AnimationPlayer.play("Present_Opened")
 
 func take_damage():
-	health -= 1
+	health -= 50
+	if health <= 0:
+		queue_free()

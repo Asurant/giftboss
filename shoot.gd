@@ -24,5 +24,5 @@ func _on_timer_timeout():
 	shoot()
 
 func transition():
-	if progress_bar.value <= 40:
+	if progress_bar.value <= 0:
 		get_parent().change_state("Hoard")

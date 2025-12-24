@@ -13,3 +13,4 @@ func _on_screen_exited():
 
 func _on_body_entered(body):
 	body.take_damage()
+	queue_free()
