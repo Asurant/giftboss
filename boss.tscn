@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dk660wq3jfnvs"]
+[gd_scene load_steps=16 format=3 uid="uid://dk660wq3jfnvs"]
 
 [ext_resource type="Script" uid="uid://d0k8d13ptnefp" path="res://FiniteStateMachine.gd" id="1_6xxrv"]
 [ext_resource type="Script" uid="uid://dalb75tq456t2" path="res://boss.gd" id="1_o1i15"]
@@ -6,7 +6,8 @@
 [ext_resource type="Script" uid="uid://bmogjgdfylc2x" path="res://shoot.gd" id="3_lnbgr"]
 [ext_resource type="PackedScene" uid="uid://celvun8pp7lou" path="res://bullet.tscn" id="5_we8h1"]
 [ext_resource type="Script" uid="uid://djrpgakd6dgco" path="res://hoard.gd" id="6_we8h1"]
-[ext_resource type="PackedScene" uid="uid://j3cl1an4486e" path="res://minions_slash.tscn" id="7_kvofc"]
+[ext_resource type="PackedScene" uid="uid://tq8rjlfbvnbi" path="res://minions_shoot.tscn" id="7_kvofc"]
+[ext_resource type="PackedScene" uid="uid://j3cl1an4486e" path="res://minions_slash.tscn" id="8_ef0k6"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mihky"]
 size = Vector2(50, 50)
@@ -93,8 +94,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnbgr"]
 size = Vector2(50, 50)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1i15"]
-size = Vector2(300, 300)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ef0k6"]
+radius = 150.0
 
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 2
@@ -169,7 +170,7 @@ shape = SubResource("RectangleShape2D_lnbgr")
 [node name="PlayerDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-shape = SubResource("RectangleShape2D_o1i15")
+shape = SubResource("CircleShape2D_ef0k6")
 
 [node name="debug" type="Label" parent="."]
 anchors_preset = 5
@@ -194,11 +195,12 @@ script = ExtResource("3_lnbgr")
 bullet_node = ExtResource("5_we8h1")
 
 [node name="Timer" type="Timer" parent="FiniteStateMachine/Shoot"]
-wait_time = 0.7
+wait_time = 1.5
 
 [node name="Hoard" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("6_we8h1")
 minion_shoot = ExtResource("7_kvofc")
+minion_slash = ExtResource("8_ef0k6")
 
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
 [connection signal="timeout" from="FiniteStateMachine/Shoot/Timer" to="FiniteStateMachine/Shoot" method="_on_timer_timeout"]

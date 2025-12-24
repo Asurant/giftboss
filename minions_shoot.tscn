@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://tq8rjlfbvnbi"]
 
-[ext_resource type="Script" uid="uid://dk7xlw4b61gbr" path="res://minions_shoot.gd" id="1_4wpww"]
-[ext_resource type="PackedScene" uid="uid://celvun8pp7lou" path="res://bullet.tscn" id="2_mcati"]
+[ext_resource type="Script" uid="uid://dk7xlw4b61gbr" path="res://minions_shoot.gd" id="1_7w5l4"]
+[ext_resource type="PackedScene" uid="uid://celvun8pp7lou" path="res://bullet.tscn" id="2_hro77"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w0c1u"]
 size = Vector2(20, 20)
@@ -71,8 +71,8 @@ _data = {
 [node name="minions_shoot" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_4wpww")
-bullet_node = ExtResource("2_mcati")
+script = ExtResource("1_7w5l4")
+bullet_node = ExtResource("2_hro77")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 1, 1)
@@ -89,6 +89,6 @@ libraries = {
 autoplay = "play"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 1.5
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
