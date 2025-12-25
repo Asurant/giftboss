@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://j3cl1an4486e"]
+[gd_scene load_steps=9 format=3 uid="uid://j3cl1an4486e"]
 
 [ext_resource type="Script" uid="uid://0krkfknlt5bi" path="res://minions_slash.gd" id="1_yrn2s"]
 
@@ -70,6 +70,8 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_yrn2s"]
 radius = 100.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4xt5"]
+
 [node name="minions_slash" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
@@ -90,12 +92,20 @@ libraries = {
 autoplay = "play"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 10.0
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_yrn2s")
 
+[node name="DashHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashHitbox"]
+shape = SubResource("RectangleShape2D_c4xt5")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_shape_exited" from="PlayerDetection" to="." method="_on_player_detection_body_shape_exited"]
+[connection signal="body_entered" from="DashHitbox" to="." method="_on_dash_hitbox_body_entered"]

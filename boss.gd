@@ -11,6 +11,6 @@ var health = 50:
 			$AnimationPlayer.play("Present_Opened")
 
 func take_damage():
-	health -= 50
+	health -= 1
 	if health <= 0:
 		queue_free()

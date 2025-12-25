@@ -7,7 +7,13 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func take_damage():
-	pass
+	health -= 1
+	if health <= 0:
+		queue_free()
+
+var health = 25:
+	set(value):
+		health = value
 
 func shoot():
 	var bullet = bullet_node.instantiate()
